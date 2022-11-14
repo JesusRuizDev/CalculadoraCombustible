@@ -11,7 +11,7 @@ package jesusruiz.calculadoracombustible;
  */
 public class CalculadoraCombustible {
 
-    public CalculadoraCombustible(int minutos,int fuelLap,int timeLap){
+    public CalculadoraCombustible(int minutos,double fuelLap,double timeLap){
         
         this.minutos = minutos;
         this.fuelLap = fuelLap;
@@ -24,10 +24,13 @@ public class CalculadoraCombustible {
     
     public double Calcula(){
         
-        int fuelRace = 0;
+        //int fuelRace = 0;
         
-        fuelRace = ((minutos*60)/timeLap * fuelLap + (2 * fuelLap));
-        System.out.print(fuelRace);
+        Double fuelRace = ((minutos*60)/timeLap) * fuelLap + (2 * fuelLap);
+        
+        //int fuelrace2 = Double.parseDouble(fuelRace);
+        
+        //System.out.print(fuelrace2);
                 
         
         
@@ -37,6 +40,6 @@ public class CalculadoraCombustible {
     
     // zona variables
     int minutos;
-    int fuelLap,timeLap;
+    double fuelLap,timeLap;
     
 }

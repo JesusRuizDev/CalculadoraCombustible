@@ -39,12 +39,13 @@ public class FuelCalculator extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jSpinner2 = new javax.swing.JSpinner();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
@@ -90,8 +91,6 @@ public class FuelCalculator extends javax.swing.JFrame {
 
         jLabel3.setText("Tiempo de vuelta");
 
-        jTextField3.setColumns(12);
-
         jButton1.setText("Calcular");
         jButton1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -111,6 +110,10 @@ public class FuelCalculator extends javax.swing.JFrame {
         jLabel5.setText("0");
 
         jLabel6.setText("Litros de combustible");
+
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Menu");
@@ -156,24 +159,25 @@ public class FuelCalculator extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1)
+                        .addComponent(jLabel2)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton1)
-                                .addComponent(jLabel2)))
+                        .addComponent(jSpinner2)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 43, Short.MAX_VALUE)))
+                        .addComponent(jSpinner1))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -197,8 +201,9 @@ public class FuelCalculator extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
@@ -223,16 +228,44 @@ public class FuelCalculator extends javax.swing.JFrame {
         // TODO add your handling code herde:
         String texto1 = jTextField1.getText();
         String texto2 = jTextField2.getText();
-        String texto3 = jTextField3.getText();
+        double texto3 = (double)jSpinner2.getValue();
+        double texto4 = (double) jSpinner1.getValue();
+        
+        
         
         int casilla1 = Integer.parseInt(texto1);
-        int casilla2 = Integer.parseInt(texto2);
-        int casilla3 = Integer.parseInt(texto3);
+        double casilla2 = Double.parseDouble(texto2);
+        
+        double casilla3 =(texto3 * 60 + texto4);
+        
+        System.out.println("Casilla 3 " + casilla3);
+        System.out.println("Casilla 2 " + casilla2);
+        System.out.println("Casilla 1 " + casilla1);
+        
+        //double casilla2int = casilla2;
+        //double casilla3int = casilla3;
+        
+        // minutos
+        
+        //Double casillatercera = 
         
         System.out.println(texto1 + " " + texto2 + " " + texto3);
         
          CalculadoraCombustible calc = new CalculadoraCombustible(casilla1,casilla2,casilla3);
-        calc.Calcula();
+        Double resultadoLabel = calc.Calcula();
+        
+        //int resultadoLabelInt = (int) resultadoLabel;
+        
+        //double resDoub =Math.round(resultadoLabel);
+        //System.out.println(resDoub);
+        
+        String res = Double.toString(resultadoLabel);
+        
+        //String res = Integer.toString(resultadoLabelInt );
+        
+        jLabel5.setText(res);
+        
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -315,9 +348,10 @@ public class FuelCalculator extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 
