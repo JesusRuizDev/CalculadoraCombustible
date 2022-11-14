@@ -19,7 +19,10 @@ public class FuelCalculator extends javax.swing.JFrame {
         initComponents();
         //FuelCalculator calc = new FuelCalculator();
         setVisible(true);
+        
+       
     }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,15 +68,29 @@ public class FuelCalculator extends javax.swing.JFrame {
 
         jLabel1.setText("Duracion de la carrera en minutos");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setColumns(12);
+        jTextField1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTextField1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Gasto de combustible por vuelta");
 
-        jTextField2.setText("jTextField2");
+        jTextField2.setColumns(12);
 
         jLabel3.setText("Tiempo de vuelta");
 
-        jTextField3.setText("jTextField3");
+        jTextField3.setColumns(12);
 
         jButton1.setText("Calcular");
         jButton1.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -156,7 +173,7 @@ public class FuelCalculator extends javax.swing.JFrame {
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 61, Short.MAX_VALUE)))
+                        .addGap(0, 43, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -201,8 +218,22 @@ public class FuelCalculator extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
+      
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code herde:
+        String texto1 = jTextField1.getText();
+        String texto2 = jTextField2.getText();
+        String texto3 = jTextField3.getText();
+        
+        int casilla1 = Integer.parseInt(texto1);
+        int casilla2 = Integer.parseInt(texto2);
+        int casilla3 = Integer.parseInt(texto3);
+        
+        System.out.println(texto1 + " " + texto2 + " " + texto3);
+        
+         CalculadoraCombustible calc = new CalculadoraCombustible(casilla1,casilla2,casilla3);
+        calc.Calcula();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
@@ -217,6 +248,14 @@ public class FuelCalculator extends javax.swing.JFrame {
     private void jButton1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jButton1ComponentShown
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ComponentShown
+
+    private void jTextField1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTextField1AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1AncestorAdded
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,10 +289,15 @@ public class FuelCalculator extends javax.swing.JFrame {
             public void run() {
                 new FuelCalculator().setVisible(true);
                 
+                
+                
                
                 
             }
         });
+        
+        //CalculadoraCombustible calc = new CalculadoraCombustible(casilla1,casilla2,casilla3);
+        //calc.Calcula();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -278,3 +322,5 @@ public class FuelCalculator extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+

@@ -11,7 +11,32 @@ package jesusruiz.calculadoracombustible;
  */
 public class CalculadoraCombustible {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public CalculadoraCombustible(int minutos,int fuelLap,int timeLap){
+        
+        this.minutos = minutos;
+        this.fuelLap = fuelLap;
+        this.timeLap = timeLap;
+        
+        
     }
+    
+    // Metodo que calcula combustible
+    
+    public double Calcula(){
+        
+        int fuelRace = 0;
+        
+        fuelRace = ((minutos*60)/timeLap * fuelLap + (2 * fuelLap));
+        System.out.print(fuelRace);
+                
+        
+        
+        return fuelRace;
+        
+    }
+    
+    // zona variables
+    int minutos;
+    int fuelLap,timeLap;
+    
 }
