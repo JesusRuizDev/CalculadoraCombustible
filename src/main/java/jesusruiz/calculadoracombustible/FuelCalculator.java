@@ -4,6 +4,7 @@
  */
 package jesusruiz.calculadoracombustible;
 
+import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,6 +35,7 @@ public class FuelCalculator extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialog2 = new javax.swing.JDialog();
+        jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -61,6 +63,17 @@ public class FuelCalculator extends javax.swing.JFrame {
         );
         jDialog2Layout.setVerticalGroup(
             jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -226,15 +239,20 @@ public class FuelCalculator extends javax.swing.JFrame {
       
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code herde:
+        
+        
         String texto1 = jTextField1.getText();
         String texto2 = jTextField2.getText();
         double texto3 = (double)jSpinner2.getValue();
         double texto4 = (double) jSpinner1.getValue();
         
         
-        
+        try{
         int casilla1 = Integer.parseInt(texto1);
+        
+                
         double casilla2 = Double.parseDouble(texto2);
+     
         
         double casilla3 =(texto3 * 60 + texto4);
         
@@ -251,6 +269,10 @@ public class FuelCalculator extends javax.swing.JFrame {
         
         System.out.println(texto1 + " " + texto2 + " " + texto3);
         
+        
+   
+        
+        
          CalculadoraCombustible calc = new CalculadoraCombustible(casilla1,casilla2,casilla3);
         Double resultadoLabel = calc.Calcula();
         
@@ -264,8 +286,12 @@ public class FuelCalculator extends javax.swing.JFrame {
         //String res = Integer.toString(resultadoLabelInt );
         
         jLabel5.setText(res);
-        
-        
+        }catch (Exception e){
+                System.out.println("error");
+                JOptionPane.showMessageDialog(null, "Error: Debe introducir datos numericos","Error",JOptionPane.PLAIN_MESSAGE);
+               e.printStackTrace();
+        }
+     
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -340,6 +366,7 @@ public class FuelCalculator extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
