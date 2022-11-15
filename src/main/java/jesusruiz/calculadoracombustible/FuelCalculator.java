@@ -4,6 +4,7 @@
  */
 package jesusruiz.calculadoracombustible;
 
+import java.awt.Toolkit;
 import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
 
@@ -240,21 +241,29 @@ public class FuelCalculator extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code herde:
         
-        
+        try{
         String texto1 = jTextField1.getText();
         String texto2 = jTextField2.getText();
         double texto3 = (double)jSpinner2.getValue();
         double texto4 = (double) jSpinner1.getValue();
         
         
-        try{
+        //try{
         int casilla1 = Integer.parseInt(texto1);
         
                 
         double casilla2 = Double.parseDouble(texto2);
-     
         
         double casilla3 =(texto3 * 60 + texto4);
+        
+        
+        
+        
+       //if (casilla1 == 0 || casilla2 ==0 || casilla3 == 0){
+       //     JOptionPane.showMessageDialog(null, "Error: Debe introducir datos numericos","Error",JOptionPane.ERROR_MESSAGE);
+            
+       // }        
+        
         
         System.out.println("Casilla 3 " + casilla3);
         System.out.println("Casilla 2 " + casilla2);
@@ -284,12 +293,28 @@ public class FuelCalculator extends javax.swing.JFrame {
         String res = Double.toString(resultadoLabel);
         
         //String res = Integer.toString(resultadoLabelInt );
+       
+        
+        
+        if (casilla1 == 0 || casilla2 ==0 || casilla3 == 0){
+        JOptionPane.showMessageDialog(null, "Error: Debe introducir datos numericos","Error",JOptionPane.ERROR_MESSAGE);
+        jLabel5.setText("0");   
+       }else{       
         
         jLabel5.setText(res);
+        }
+        
+        
+        
         }catch (Exception e){
                 System.out.println("error");
-                JOptionPane.showMessageDialog(null, "Error: Debe introducir datos numericos","Error",JOptionPane.PLAIN_MESSAGE);
-               e.printStackTrace();
+                
+                
+                
+                JOptionPane.showMessageDialog(null, "Error: Debe introducir datos numericos","Error",JOptionPane.ERROR_MESSAGE);
+                
+                e.printStackTrace();
+                Toolkit.getDefaultToolkit().beep();
         }
      
         
