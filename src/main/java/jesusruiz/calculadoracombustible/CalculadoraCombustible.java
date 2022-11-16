@@ -7,39 +7,36 @@ package jesusruiz.calculadoracombustible;
 
 /**
  *
- * @author jesus
+ * Clase que calcula el combustible para una carrera
+ * 
+ * 
+ * @author JesusRuizDev
  */
 public class CalculadoraCombustible {
 
-    public CalculadoraCombustible(int minutos,double fuelLap,double timeLap){
+    public CalculadoraCombustible(int timeRace,double fuelLap,double timeLap){
         
-        this.minutos = minutos;
+        this.timeRace = timeRace;
         this.fuelLap = fuelLap;
-        this.timeLap = timeLap;
-        
+        this.timeLap = timeLap;     
         
     }
     
+   
     // Metodo que calcula combustible
     
-    public double Calcula(){
+    public int CalculaCombustible(){
         
-        //int fuelRace = 0;
+        double fuelRace = ((timeRace*60)/timeLap) * fuelLap + (2 * fuelLap); // formula
         
-        Double fuelRace = ((minutos*60)/timeLap) * fuelLap + (2 * fuelLap);
+        int fuelraceInt = (int) fuelRace;  // castea double a integer para resultado final
         
-        //int fuelrace2 = Double.parseDouble(fuelRace);
-        
-        //System.out.print(fuelrace2);
-                
-        
-        
-        return fuelRace;
+        return fuelraceInt;
         
     }
     
     // zona variables
-    int minutos;
+    int timeRace;
     double fuelLap,timeLap;
     
 }

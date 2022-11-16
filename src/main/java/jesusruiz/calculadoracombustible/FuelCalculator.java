@@ -19,7 +19,7 @@ public class FuelCalculator extends javax.swing.JFrame {
      */
     public FuelCalculator() {
         initComponents();
-        //FuelCalculator calc = new FuelCalculator();
+        setTitle("Calculadora de combustible");
         setVisible(true);
         
        
@@ -79,6 +79,7 @@ public class FuelCalculator extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(700, 400));
         setResizable(false);
 
         jLabel1.setText("Duracion de la carrera en minutos");
@@ -117,12 +118,14 @@ public class FuelCalculator extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
         jLabel4.setText("Necesitará ");
 
         jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(10, 187, 17));
         jLabel5.setText("0");
 
+        jLabel6.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
         jLabel6.setText("Litros de combustible");
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
@@ -177,9 +180,7 @@ public class FuelCalculator extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1)
-                        .addComponent(jLabel2)))
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -196,11 +197,15 @@ public class FuelCalculator extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addGap(93, 93, 93))
+                .addGap(115, 115, 115))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,57 +247,34 @@ public class FuelCalculator extends javax.swing.JFrame {
         // TODO add your handling code herde:
         
         try{
+       
+        // Obtenemos los valores de los jTextField
         String texto1 = jTextField1.getText();
         String texto2 = jTextField2.getText();
+        
+        // Obtenemos los valores de los jSinner
         double texto3 = (double)jSpinner2.getValue();
         double texto4 = (double) jSpinner1.getValue();
         
         
-        //try{
-        int casilla1 = Integer.parseInt(texto1);
+        // convertimos los String a Integer y double para poder operar
+        int casilla1 = Integer.parseInt(texto1);               
+        double casilla2 = Double.parseDouble(texto2); 
         
-                
-        double casilla2 = Double.parseDouble(texto2);
-        
+        // pasamos a segundos los datos obtenidos en los JSpiner               
         double casilla3 =(texto3 * 60 + texto4);
         
         
+        // Invocamos a la clase CalculadoraCombustible y creamos un objeto para usar el metodo "CalculaCombustible()"
+        // le pasamos por parametro "timeRace"
         
-        
-       //if (casilla1 == 0 || casilla2 ==0 || casilla3 == 0){
-       //     JOptionPane.showMessageDialog(null, "Error: Debe introducir datos numericos","Error",JOptionPane.ERROR_MESSAGE);
-            
-       // }        
-        
-        
-        System.out.println("Casilla 3 " + casilla3);
-        System.out.println("Casilla 2 " + casilla2);
-        System.out.println("Casilla 1 " + casilla1);
-        
-        //double casilla2int = casilla2;
-        //double casilla3int = casilla3;
-        
-        // minutos
-        
-        //Double casillatercera = 
-        
-        System.out.println(texto1 + " " + texto2 + " " + texto3);
-        
+        CalculadoraCombustible calc = new CalculadoraCombustible(casilla1,casilla2,casilla3);
+        int resultadoLabel = calc.CalculaCombustible();
         
    
+        String res = Integer.toString(resultadoLabel);
         
-        
-         CalculadoraCombustible calc = new CalculadoraCombustible(casilla1,casilla2,casilla3);
-        Double resultadoLabel = calc.Calcula();
-        
-        //int resultadoLabelInt = (int) resultadoLabel;
-        
-        //double resDoub =Math.round(resultadoLabel);
-        //System.out.println(resDoub);
-        
-        String res = Double.toString(resultadoLabel);
-        
-        //String res = Integer.toString(resultadoLabelInt );
+     
        
         
         
@@ -326,7 +308,7 @@ public class FuelCalculator extends javax.swing.JFrame {
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Jesus Ruiz 2011","Sobre",JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, " Jesus Ruiz 2022 ","Sobre",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void jButton1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jButton1ComponentShown
@@ -380,8 +362,7 @@ public class FuelCalculator extends javax.swing.JFrame {
             }
         });
         
-        //CalculadoraCombustible calc = new CalculadoraCombustible(casilla1,casilla2,casilla3);
-        //calc.Calcula();
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
