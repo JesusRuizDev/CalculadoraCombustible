@@ -308,7 +308,13 @@ public class FuelCalculator extends javax.swing.JFrame {
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, " Jesus Ruiz 2022 ","Sobre",JOptionPane.INFORMATION_MESSAGE);
+       
+        sobre ac = new sobre();
+        ac.setVisible(true);
+                              
+     
+        
+        //JOptionPane.showMessageDialog(null, " Jesus Ruiz 2022 ","Sobre",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void jButton1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jButton1ComponentShown
@@ -354,6 +360,8 @@ public class FuelCalculator extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FuelCalculator().setVisible(true);
+                
+                
                 
                 
                 
