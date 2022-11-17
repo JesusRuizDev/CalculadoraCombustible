@@ -9,8 +9,9 @@ import java.util.InputMismatchException;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Programa que calcula el comustible necesario para una carrera de SimRacing
  * @author jesus
+ * @version 1.2
  */
 public class FuelCalculator extends javax.swing.JFrame {
 
@@ -21,8 +22,7 @@ public class FuelCalculator extends javax.swing.JFrame {
         initComponents();
         setTitle("Calculadora de combustible");
         setVisible(true);
-        
-       
+               
     }
      
 
@@ -53,7 +53,6 @@ public class FuelCalculator extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         exitMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        contentsMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
@@ -118,14 +117,14 @@ public class FuelCalculator extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel4.setText("Necesitará ");
 
-        jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(10, 187, 17));
         jLabel5.setText("0");
 
-        jLabel6.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel6.setText("Litros de combustible");
 
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
@@ -149,15 +148,6 @@ public class FuelCalculator extends javax.swing.JFrame {
         helpMenu.setMnemonic('h');
         helpMenu.setText("Ayuda");
 
-        contentsMenuItem.setMnemonic('c');
-        contentsMenuItem.setText("Ayuda");
-        contentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contentsMenuItemActionPerformed(evt);
-            }
-        });
-        helpMenu.add(contentsMenuItem);
-
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("Sobre..");
         aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -176,6 +166,10 @@ public class FuelCalculator extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -183,28 +177,21 @@ public class FuelCalculator extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jSpinner2)
+                        .addComponent(jSpinner2, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jSpinner1))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
+                    .addComponent(jTextField2)
+                    .addComponent(jTextField1))
                 .addGap(64, 64, 64))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(95, 95, 95)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addGap(115, 115, 115))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(195, 195, 195)
-                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -227,12 +214,12 @@ public class FuelCalculator extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
@@ -266,55 +253,59 @@ public class FuelCalculator extends javax.swing.JFrame {
         
         
         // Invocamos a la clase CalculadoraCombustible y creamos un objeto para usar el metodo "CalculaCombustible()"
-        // le pasamos por parametro "timeRace"
+        // le pasamos por parametro "timeRace", "fuelLap" y "timelap" (este ultimo en segundos)
         
         CalculadoraCombustible calc = new CalculadoraCombustible(casilla1,casilla2,casilla3);
+        
+        
+        // El objeto "calc" llama al metodo CalculaCombustible() de la clase "CalculadoraCombustible"
+        // para que realice los calculos en introduce el resultado en la variable "resultadoLabel"
         int resultadoLabel = calc.CalculaCombustible();
         
-   
+        // casteamos la variable "resultadoLabel" a String para mostrarla en un jLabel
         String res = Integer.toString(resultadoLabel);
         
      
        
         
+        // evaluamos los 3 datos recogidos, para comprobar si se han introducido todos los datos,
+        // y se avisa con un JOptionpane, si falta algun dato o todos
         
         if (casilla1 == 0 || casilla2 ==0 || casilla3 == 0){
-        JOptionPane.showMessageDialog(null, "Error: Debe introducir datos numericos","Error",JOptionPane.ERROR_MESSAGE);
-        jLabel5.setText("0");   
-       }else{       
+            
+        JOptionPane.showMessageDialog(null, "Error: Todos los campos deben ser rellenados","Error",JOptionPane.ERROR_MESSAGE);
         
+        // sobreescribimos jLabel5 a "0", ya que si no se introducen datos mostrara "NAND"
+        jLabel5.setText("0");   
+       
+        }else{       
+        
+        // si todos los campos estan rellenos, se muestra el valor de la variable "res" en el jLabel5
         jLabel5.setText(res);
         }
         
         
-        
+        // Si se introducen caracteres que NO SEAN numericos o caracteres especiales en la casilla,
+        // se avisa al usuario mediante un JOptionPane
         }catch (Exception e){
-                System.out.println("error");
-                
-                
-                
+                                               
                 JOptionPane.showMessageDialog(null, "Error: Debe introducir datos numericos","Error",JOptionPane.ERROR_MESSAGE);
                 
                 e.printStackTrace();
+                
+                // lanza un beep
                 Toolkit.getDefaultToolkit().beep();
         }
      
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contentsMenuItemActionPerformed
-
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-        // TODO add your handling code here:
+        // Al seleccionar el menu "Sobre" se instancia un objeto de la clase sobre
+        // y se hace el frame visible
        
         sobre ac = new sobre();
         ac.setVisible(true);
-                              
-     
-        
-        //JOptionPane.showMessageDialog(null, " Jesus Ruiz 2022 ","Sobre",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void jButton1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jButton1ComponentShown
@@ -375,7 +366,6 @@ public class FuelCalculator extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JMenuItem contentsMenuItem;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;

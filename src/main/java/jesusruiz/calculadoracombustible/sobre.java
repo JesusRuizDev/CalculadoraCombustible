@@ -6,11 +6,10 @@ package jesusruiz.calculadoracombustible;
 
 import java.awt.Desktop;
 import java.net.URL;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+
 
 /**
- *
+ * 
  * @author jesus
  */
 public class sobre extends javax.swing.JFrame {

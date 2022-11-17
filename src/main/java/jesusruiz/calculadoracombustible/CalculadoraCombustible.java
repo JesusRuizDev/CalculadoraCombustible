@@ -36,7 +36,7 @@ public class CalculadoraCombustible {
     }
     
     // zona variables
-    int timeRace;
-    double fuelLap,timeLap;
+    private int timeRace;
+    private double fuelLap,timeLap;
     
 }
